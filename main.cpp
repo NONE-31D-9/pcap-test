@@ -1,4 +1,3 @@
-#include <pcap.h>
 #include "pcap-test.h"
 
 void usage() {
@@ -29,8 +28,7 @@ int main(int argc, char* argv[]) {
             printf("pcap_next_ex return %d(%s)\n", res, pcap_geterr(handle));
             break;
         }
-        printf("%u bytes captured\n", header->caplen);
-        dump_pkt(packet);
+        dump_pkt(packet, header);
     }
 
     pcap_close(handle);
